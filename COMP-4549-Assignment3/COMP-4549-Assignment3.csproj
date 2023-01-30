@@ -156,6 +156,18 @@
     <Compile Include="Migrations\202301300507278_Migration4.designer.cs">
       <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301300515542_Migration5.cs" />
+    <Compile Include="Migrations\202301300515542_Migration5.designer.cs">
+      <DependentUpon>202301300515542_Migration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301300518356_Migration6.cs" />
+    <Compile Include="Migrations\202301300518356_Migration6.designer.cs">
+      <DependentUpon>202301300518356_Migration6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301300528125_Migration7.cs" />
+    <Compile Include="Migrations\202301300528125_Migration7.designer.cs">
+      <DependentUpon>202301300528125_Migration7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -252,6 +264,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301300507278_Migration4.resx">
       <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300515542_Migration5.resx">
+      <DependentUpon>202301300515542_Migration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300518356_Migration6.resx">
+      <DependentUpon>202301300518356_Migration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300528125_Migration7.resx">
+      <DependentUpon>202301300528125_Migration7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

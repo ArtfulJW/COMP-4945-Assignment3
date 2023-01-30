@@ -48,7 +48,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Address")] Client client)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Address")] Client client)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] Client client)
         {
             if (ModelState.IsValid)
             {
