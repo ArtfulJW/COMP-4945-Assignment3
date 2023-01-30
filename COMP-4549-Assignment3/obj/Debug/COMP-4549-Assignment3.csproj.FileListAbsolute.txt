@@ -84,3 +84,6 @@ D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assi
 D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP_4549_Assignment3.Migrations.InitialCreate.resources
 D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP-4549-Assignment3.csproj.GenerateResource.cache
 D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP_4549_Assignment3.Migrations.AddJobCollectionClient.resources
+D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP_4549_Assignment3.Migrations.Migration2.resources
+D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP_4549_Assignment3.Migrations.Migration3.resources
+D:\BCIT\BCIT-Level-4\COMP-4549\Assignment-3\COMP-4549-Assignment3\COMP-4549-Assignment3\obj\Debug\COMP_4549_Assignment3.Migrations.Migration4.resources

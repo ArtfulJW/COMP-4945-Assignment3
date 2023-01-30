@@ -9,6 +9,6 @@ namespace COMP_4549_Assignment3.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public ICollection<Jobs> requestedJobs { get; set; }
+        public virtual ICollection<Jobs> requestedJobs { get; set; }
     }
 }

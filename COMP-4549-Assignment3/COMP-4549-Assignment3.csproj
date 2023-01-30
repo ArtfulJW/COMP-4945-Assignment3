@@ -131,6 +131,8 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +143,18 @@
     <Compile Include="Migrations\202301300327168_AddJobCollectionClient.cs" />
     <Compile Include="Migrations\202301300327168_AddJobCollectionClient.designer.cs">
       <DependentUpon>202301300327168_AddJobCollectionClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301300501400_Migration2.cs" />
+    <Compile Include="Migrations\202301300501400_Migration2.designer.cs">
+      <DependentUpon>202301300501400_Migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301300504550_Migration3.cs" />
+    <Compile Include="Migrations\202301300504550_Migration3.designer.cs">
+      <DependentUpon>202301300504550_Migration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301300507278_Migration4.cs" />
+    <Compile Include="Migrations\202301300507278_Migration4.designer.cs">
+      <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -196,6 +210,16 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -219,6 +243,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301300327168_AddJobCollectionClient.resx">
       <DependentUpon>202301300327168_AddJobCollectionClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300501400_Migration2.resx">
+      <DependentUpon>202301300501400_Migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300504550_Migration3.resx">
+      <DependentUpon>202301300504550_Migration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301300507278_Migration4.resx">
+      <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
