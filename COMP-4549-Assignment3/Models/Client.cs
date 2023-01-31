@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace COMP_4549_Assignment3.Models
 {
-    public class Client
+    public class Client : Person
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public List<Jobs> requestedJobs { get; set; }
+        public int ClientID { get; set; }
     }
 }

@@ -7,7 +7,8 @@ namespace COMP_4549_Assignment3.Models
 {
     public class Employee : Person
     {
+        public int EmployeeID { get; set; }
         public DateTime DOE { get; set; }
-        public new int ID { get; set; }
+        
     }
 }

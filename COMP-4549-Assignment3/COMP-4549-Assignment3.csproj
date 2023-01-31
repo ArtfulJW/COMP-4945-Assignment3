@@ -136,44 +136,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202301300238347_InitialCreate.cs" />
-    <Compile Include="Migrations\202301300238347_InitialCreate.designer.cs">
-      <DependentUpon>202301300238347_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300327168_AddJobCollectionClient.cs" />
-    <Compile Include="Migrations\202301300327168_AddJobCollectionClient.designer.cs">
-      <DependentUpon>202301300327168_AddJobCollectionClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300501400_Migration2.cs" />
-    <Compile Include="Migrations\202301300501400_Migration2.designer.cs">
-      <DependentUpon>202301300501400_Migration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300504550_Migration3.cs" />
-    <Compile Include="Migrations\202301300504550_Migration3.designer.cs">
-      <DependentUpon>202301300504550_Migration3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300507278_Migration4.cs" />
-    <Compile Include="Migrations\202301300507278_Migration4.designer.cs">
-      <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300515542_Migration5.cs" />
-    <Compile Include="Migrations\202301300515542_Migration5.designer.cs">
-      <DependentUpon>202301300515542_Migration5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300518356_Migration6.cs" />
-    <Compile Include="Migrations\202301300518356_Migration6.designer.cs">
-      <DependentUpon>202301300518356_Migration6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301300528125_Migration7.cs" />
-    <Compile Include="Migrations\202301300528125_Migration7.designer.cs">
-      <DependentUpon>202301300528125_Migration7.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Services.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,16 +190,16 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Services\Create.cshtml" />
-    <Content Include="Views\Services\Delete.cshtml" />
-    <Content Include="Views\Services\Details.cshtml" />
-    <Content Include="Views\Services\Edit.cshtml" />
-    <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\Delete.cshtml" />
     <Content Include="Views\Jobs\Details.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,32 +216,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202301300238347_InitialCreate.resx">
-      <DependentUpon>202301300238347_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300327168_AddJobCollectionClient.resx">
-      <DependentUpon>202301300327168_AddJobCollectionClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300501400_Migration2.resx">
-      <DependentUpon>202301300501400_Migration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300504550_Migration3.resx">
-      <DependentUpon>202301300504550_Migration3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300507278_Migration4.resx">
-      <DependentUpon>202301300507278_Migration4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300515542_Migration5.resx">
-      <DependentUpon>202301300515542_Migration5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300518356_Migration6.resx">
-      <DependentUpon>202301300518356_Migration6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301300528125_Migration7.resx">
-      <DependentUpon>202301300528125_Migration7.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

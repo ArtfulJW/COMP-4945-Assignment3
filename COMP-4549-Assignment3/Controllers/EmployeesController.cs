@@ -29,7 +29,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = await db.Employees.FindAsync(id);
+            Employee employee = (Employee) await db.People.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -48,11 +48,11 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,DOE,Name")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,EmployeeID,DOE")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
+                db.People.Add(employee);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = await db.Employees.FindAsync(id);
+            Employee employee = (Employee) await db.People.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,DOE,Name")] Employee employee)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,EmployeeID,DOE")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = await db.Employees.FindAsync(id);
+            Employee employee = (Employee) await db.People.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace COMP_4549_Assignment3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Employee employee = await db.Employees.FindAsync(id);
-            db.Employees.Remove(employee);
+            Employee employee = (Employee) await db.People.FindAsync(id);
+            db.People.Remove(employee);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
