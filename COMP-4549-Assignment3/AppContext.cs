@@ -19,6 +19,5 @@ namespace COMP_4549_Assignment3
         public DbSet<Service> Services { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
 
-        public System.Data.Entity.DbSet<COMP_4549_Assignment3.Models.Person> People { get; set; }
     }
 }

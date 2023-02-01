@@ -18,17 +18,9 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClientID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClientID)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -19,7 +19,8 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Employees
         public async Task<ActionResult> Index()
         {
-            return View(await db.Employees.ToListAsync());
+            var employees = db.Employees.Include(e => e.Service);
+            return View(await employees.ToListAsync());
         }
 
         // GET: Employees/Details/5
@@ -29,7 +30,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = (Employee) await db.People.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -40,6 +41,7 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName");
             return View();
         }
 
@@ -48,15 +50,16 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,EmployeeID,DOE")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "EmployeeID,DOE,ServiceID,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(employee);
+                db.Employees.Add(employee);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
@@ -67,11 +70,12 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = (Employee) await db.People.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
@@ -80,7 +84,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,EmployeeID,DOE")] Employee employee)
+        public async Task<ActionResult> Edit([Bind(Include = "EmployeeID,DOE,ServiceID,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace COMP_4549_Assignment3.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
@@ -98,7 +103,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = (Employee) await db.People.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -111,8 +116,8 @@ namespace COMP_4549_Assignment3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Employee employee = (Employee) await db.People.FindAsync(id);
-            db.People.Remove(employee);
+            Employee employee = await db.Employees.FindAsync(id);
+            db.Employees.Remove(employee);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -48,7 +48,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ServiceID,Name")] Service service)
+        public async Task<ActionResult> Create([Bind(Include = "ServiceID,ServiceName")] Service service)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ServiceID,Name")] Service service)
+        public async Task<ActionResult> Edit([Bind(Include = "ServiceID,ServiceName")] Service service)
         {
             if (ModelState.IsValid)
             {

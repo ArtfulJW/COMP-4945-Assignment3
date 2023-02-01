@@ -48,11 +48,11 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,ClientID")] Client client)
+        public async Task<ActionResult> Create([Bind(Include = "ClientID,Name")] Client client)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(client);
+                db.Clients.Add(client);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -80,7 +80,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,ClientID")] Client client)
+        public async Task<ActionResult> Edit([Bind(Include = "ClientID,Name")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace COMP_4549_Assignment3.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Client client = await db.Clients.FindAsync(id);
-            db.People.Remove(client);
+            db.Clients.Remove(client);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
