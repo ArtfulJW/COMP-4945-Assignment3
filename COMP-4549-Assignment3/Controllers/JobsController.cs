@@ -40,7 +40,7 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Jobs/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerID = new SelectList(db.Clients, "ClientID", "Name");
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "Name");
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "Name");
             return View();
         }
