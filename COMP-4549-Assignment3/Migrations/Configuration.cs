@@ -9,8 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "COMP_4549_Assignment3.AppContext";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(COMP_4549_Assignment3.AppContext context)

@@ -19,7 +19,8 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Jobs
         public async Task<ActionResult> Index()
         {
-            return View(await db.Jobs.ToListAsync());
+            var jobs = db.Jobs.Include(j => j.Client).Include(j => j.Service);
+            return View(await jobs.ToListAsync());
         }
 
         // GET: Jobs/Details/5
@@ -40,6 +41,8 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Jobs/Create
         public ActionResult Create()
         {
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "Name");
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName");
             return View();
         }
 
@@ -48,7 +51,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,ClientID,Name")] Jobs jobs)
+        public async Task<ActionResult> Create([Bind(Include = "JobID,ClientID,ServiceID")] Jobs jobs)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +60,8 @@ namespace COMP_4549_Assignment3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "Name", jobs.ClientID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", jobs.ServiceID);
             return View(jobs);
         }
 
@@ -72,6 +77,8 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "Name", jobs.ClientID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", jobs.ServiceID);
             return View(jobs);
         }
 
@@ -80,7 +87,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,ClientID,Name")] Jobs jobs)
+        public async Task<ActionResult> Edit([Bind(Include = "JobID,ClientID,ServiceID")] Jobs jobs)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +95,8 @@ namespace COMP_4549_Assignment3.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "Name", jobs.ClientID);
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", jobs.ServiceID);
             return View(jobs);
         }
 

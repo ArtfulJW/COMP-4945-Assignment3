@@ -19,7 +19,8 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Employees
         public async Task<ActionResult> Index()
         {
-            return View(await db.Employees.ToListAsync());
+            var employees = db.Employees.Include(e => e.Service);
+            return View(await employees.ToListAsync());
         }
 
         // GET: Employees/Details/5
@@ -40,6 +41,7 @@ namespace COMP_4549_Assignment3.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName");
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,DOE,Name")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "EmployeeID,DOE,ServiceID,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +59,7 @@ namespace COMP_4549_Assignment3.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
@@ -72,6 +75,7 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
@@ -80,7 +84,7 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,DOE,Name")] Employee employee)
+        public async Task<ActionResult> Edit([Bind(Include = "EmployeeID,DOE,ServiceID,Name")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace COMP_4549_Assignment3.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", employee.ServiceID);
             return View(employee);
         }
 
