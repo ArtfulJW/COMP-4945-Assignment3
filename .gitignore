@@ -3,3 +3,8 @@ COMP-4949-Assignment3/App_Data/DefaultConnection_log.ldf
 .vs/
 COMP-4949-Assignment3/bin/
 COMP-4949-Assignment3/obj/
+
+SeleniumTest/bin/
+SeleniumTest/obj/
+SeleniumTest.Tests/bin/
+SeleniumTest.Tests/obj/
