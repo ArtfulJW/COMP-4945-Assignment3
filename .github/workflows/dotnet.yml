@@ -21,8 +21,13 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
     - name: Build app for release
       run: msbuild COMP-4549-Assignment3/COMP-4549-Assignment3.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+    
     - name: Install Google Chrome
-      run: |
-              chmod +x ./scripts/INstallChrome.sh
-                            ./scripts/InstallChrome.sh
+      uses: nanasess/setup-chromedriver@v1
+    - run: chromedriver --url-base=/wd/hub &
+    
+    - name: Build Test
+      run: msbuild SeleniumTest.Tests\SeleniumTest.Tests.csproj
+    - name: Run Test
+      run: vstest.console SeleniumTest.Tests\bin\Debug\SeleniumTest.dll
       
