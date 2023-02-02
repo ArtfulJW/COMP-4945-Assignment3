@@ -41,5 +41,5 @@ jobs:
 #     - name: Build Test
 #       run: msbuild SeleniumTest.Tests\SeleniumTest.Tests.csproj
     - name: Run Test
-      run: vstest.console.exe SeleniumTest.Tests\bin\Debug\SeleniumTest.Tests.dll
+      run: vstest.console.exe SeleniumTest.Tests\bin\Release\SeleniumTest.Tests.dll
       
