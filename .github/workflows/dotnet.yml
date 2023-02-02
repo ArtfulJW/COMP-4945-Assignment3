@@ -32,7 +32,7 @@ jobs:
     - name: Build Solution
       run: msbuild.exe COMP-4549-Assignment3.sln /p:platform="Any CPU" /p:configuration="Release"
     - name: Run Solution
-      run: vstest.console.exe COMP-4549-Assignment3\bin\Debug\SeleniumTest.Tests.dll
+      run: vstest.console.exe COMP-4549-Assignment3\bin\Debug\COMP-4549-Assignment3.dll
     
 #     - name: Install Google Chrome
 #       uses: nanasess/setup-chromedriver@v1
