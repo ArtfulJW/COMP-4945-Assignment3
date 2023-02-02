@@ -44,7 +44,7 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: published_webapp
-        path: COMP-4549-Assignment3\bin\Release
+        path: COMP-4549-Assignment3\obj\Release
         
     - name: Run Test
       run: vstest.console.exe SeleniumTest.Tests\bin\Release\SeleniumTest.Tests.dll
