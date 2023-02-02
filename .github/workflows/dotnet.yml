@@ -16,14 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Build app for release
+      run: msbuild COMP-4549-Assignment3/COMP-4549-Assignment3.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
     - name: Install Google Chrome
       run: |
               chmod +x ./scripts/INstallChrome.sh
