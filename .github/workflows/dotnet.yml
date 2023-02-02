@@ -19,8 +19,18 @@ jobs:
     - uses: actions/checkout@v3
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
-    - name: Build app for release
-      run: msbuild COMP-4549-Assignment3/COMP-4549-Assignment3.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+        
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
+      
+    - name: Restore Packages
+      run: nuget restore Sandbox.sln
+      
+    - name: Build Solution
+      run: msbuild.exe SOLUTIONPATH /p:platform="Any CPU" /p:configuration="Release"
     
     - name: Install Google Chrome
       uses: nanasess/setup-chromedriver@v1
@@ -29,5 +39,5 @@ jobs:
     - name: Build Test
       run: msbuild SeleniumTest.Tests\SeleniumTest.Tests.csproj
     - name: Run Test
-      run: vstest.console SeleniumTest.Tests\bin\Debug\SeleniumTest.dll
+      run: vstest.console.exe SeleniumTest.Tests\bin\Debug\SeleniumTest.Tests.dll
       
