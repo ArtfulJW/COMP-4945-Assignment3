@@ -27,10 +27,10 @@ jobs:
       uses: darenm/Setup-VSTest@v1
       
     - name: Restore Packages
-      run: nuget restore SOLUTIONPATH
+      run: nuget restore ./COMP-4549-Assignment3.sln
       
     - name: Build Solution
-      run: msbuild.exe SOLUTIONPATH /p:platform="Any CPU" /p:configuration="Release"
+      run: msbuild.exe ./COMP-4549-Assignment3.sln /p:platform="Any CPU" /p:configuration="Release"
     
     - name: Install Google Chrome
       uses: nanasess/setup-chromedriver@v1
