@@ -1,4 +1,4 @@
-﻿@model COMP_4549_Assignment3.Models.Services
+﻿@model COMP_4549_Assignment3.Models.Service
 
 @{
     ViewBag.Title = "Details";
@@ -7,20 +7,20 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Services</h4>
+    <h4>Service</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ServiceName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.ServiceName)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

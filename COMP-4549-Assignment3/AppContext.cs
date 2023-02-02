@@ -14,11 +14,10 @@ namespace COMP_4549_Assignment3
         : base("Database1")
         {
         }
-        public DbSet<Client> Client { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Services> Services { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
-
 
     }
 }

@@ -29,12 +29,12 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services services = await db.Services.FindAsync(id);
-            if (services == null)
+            Service service = await db.Services.FindAsync(id);
+            if (service == null)
             {
                 return HttpNotFound();
             }
-            return View(services);
+            return View(service);
         }
 
         // GET: Services/Create
@@ -48,16 +48,16 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name")] Services services)
+        public async Task<ActionResult> Create([Bind(Include = "ServiceID,ServiceName")] Service service)
         {
             if (ModelState.IsValid)
             {
-                db.Services.Add(services);
+                db.Services.Add(service);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(services);
+            return View(service);
         }
 
         // GET: Services/Edit/5
@@ -67,12 +67,12 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services services = await db.Services.FindAsync(id);
-            if (services == null)
+            Service service = await db.Services.FindAsync(id);
+            if (service == null)
             {
                 return HttpNotFound();
             }
-            return View(services);
+            return View(service);
         }
 
         // POST: Services/Edit/5
@@ -80,15 +80,15 @@ namespace COMP_4549_Assignment3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] Services services)
+        public async Task<ActionResult> Edit([Bind(Include = "ServiceID,ServiceName")] Service service)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(services).State = EntityState.Modified;
+                db.Entry(service).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(services);
+            return View(service);
         }
 
         // GET: Services/Delete/5
@@ -98,12 +98,12 @@ namespace COMP_4549_Assignment3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Services services = await db.Services.FindAsync(id);
-            if (services == null)
+            Service service = await db.Services.FindAsync(id);
+            if (service == null)
             {
                 return HttpNotFound();
             }
-            return View(services);
+            return View(service);
         }
 
         // POST: Services/Delete/5
@@ -111,8 +111,8 @@ namespace COMP_4549_Assignment3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Services services = await db.Services.FindAsync(id);
-            db.Services.Remove(services);
+            Service service = await db.Services.FindAsync(id);
+            db.Services.Remove(service);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
