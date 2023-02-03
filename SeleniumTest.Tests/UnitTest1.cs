@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace SeleniumTest.Tests
 {
@@ -24,11 +25,19 @@ namespace SeleniumTest.Tests
 
             CreateClient(driver);
 
+            ReadClient(driver);
+
             CreateService(driver);
+
+            ReadService(driver);
 
             CreateEmployee(driver);
 
+            ReadEmployee(driver);
+
             CreateJob(driver);
+
+            ReadJob(driver);
 
             EditClient(driver);
 
@@ -79,6 +88,37 @@ namespace SeleniumTest.Tests
             }
             Assert.IsTrue(verifyClientIsPresent);
         }
+        
+        public void ReadClient(ChromeDriver driver)
+        {
+            String client = "Marge Simpson";
+            //Client Create
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Clients")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Details")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Boolean verifyClientIsPresent = false;
+            IList<IWebElement> allElement = driver.FindElements(By.TagName("dd"));
+            foreach (IWebElement element in allElement)
+            {
+                string cellText = element.Text;
+                if (cellText == client)
+                {
+                    verifyClientIsPresent = true;
+                    break;
+                }
+            }
+            Assert.IsTrue(verifyClientIsPresent);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Back to List")).Click();
+
+            String expectedURL = "http://localhost:52393/Clients";
+            Boolean verifyRedirect = driver.Url.Equals(expectedURL);
+            Assert.IsTrue(verifyRedirect);
+        }
 
         public void CreateEmployee(ChromeDriver driver)
         {
@@ -111,6 +151,36 @@ namespace SeleniumTest.Tests
             }
             Assert.IsTrue(verifyEmployeeIsPresent);
         }
+        public void ReadEmployee(ChromeDriver driver)
+        {
+            String employee = "Lard Simpson";
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Employees")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Details")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Boolean verifyEmployeeIsPresent = false;
+            IList<IWebElement> allElement = driver.FindElements(By.TagName("dd"));
+            foreach (IWebElement element in allElement)
+            {
+                string cellText = element.Text;
+                if (cellText == employee)
+                {
+                    verifyEmployeeIsPresent = true;
+                    break;
+                }
+            }
+            Assert.IsTrue(verifyEmployeeIsPresent);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Back to List")).Click();
+
+            String expectedURL = "http://localhost:52393/Employees";
+            Boolean verifyRedirect = driver.Url.Equals(expectedURL);
+            Assert.IsTrue(verifyRedirect);
+        }
 
         public void CreateService(ChromeDriver driver)
         {
@@ -141,6 +211,36 @@ namespace SeleniumTest.Tests
                 }
             }
             Assert.IsTrue(verifyServiceIsPresent);
+        }
+        public void ReadService(ChromeDriver driver)
+        {
+            String service = "Dog Walking";
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Services")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Details")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Boolean verifyServiceIsPresent = false;
+            IList<IWebElement> allElement = driver.FindElements(By.TagName("dd"));
+            foreach (IWebElement element in allElement)
+            {
+                string cellText = element.Text;
+                if (cellText == service)
+                {
+                    verifyServiceIsPresent = true;
+                    break;
+                }
+            }
+            Assert.IsTrue(verifyServiceIsPresent);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Back to List")).Click();
+
+            String expectedURL = "http://localhost:52393/Services";
+            Boolean verifyRedirect = driver.Url.Equals(expectedURL);
+            Assert.IsTrue(verifyRedirect);
         }
         public void CreateJob(ChromeDriver driver)
         {
@@ -193,6 +293,49 @@ namespace SeleniumTest.Tests
             }
             
             Assert.IsTrue(verifyJobIsPresent);
+        }
+        public void ReadJob(ChromeDriver driver)
+        {
+            String client = "Marge Simpson";
+            String service = "Dog Walking";
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Jobs")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Details")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            Boolean verifyJobIsPresent = false;
+            int counter = 0;
+            List<string> jobs = new List<string>();
+            IList<IWebElement> allElement = driver.FindElements(By.TagName("dd"));
+            foreach (IWebElement element in allElement)
+            {
+                if (counter < 2)
+                {
+                    jobs.Add(element.Text);
+                    counter++;
+                }
+                else
+                {
+                    jobs.Clear();
+                    counter = 0;
+                }
+            }
+
+            if (jobs[0] == client && jobs[1] == service)
+            {
+                verifyJobIsPresent = true;
+            }
+
+            Assert.IsTrue(verifyJobIsPresent);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.FindElement(By.LinkText("Back to List")).Click();
+
+            String expectedURL = "http://localhost:52393/Jobs";
+            Boolean verifyRedirect = driver.Url.Equals(expectedURL);
+            Assert.IsTrue(verifyRedirect);
         }
 
         public void EditClient(ChromeDriver driver)
