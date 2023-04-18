@@ -34,5 +34,9 @@ jobs:
         name: website
         path: COMP-4549-Assignment3/website/**
         if-no-files-found: error
+    - name: Install Google Chrome
+      run: |
+              chmod +x ./scripts/INstallChrome.sh
+                       ./scripts/InstallChrome.sh
 
       
