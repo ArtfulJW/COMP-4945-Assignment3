@@ -5,9 +5,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "main", "dev", "SeleniumTest" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main", "dev", "SeleniumTest" ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -24,10 +24,15 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Install Google Chrome
-      run: |
-              chmod +x ./scripts/INstallChrome.sh
-                            ./scripts/InstallChrome.sh
-    - name: Unit test
-      run: dotnet test
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish COMP-4549-Assignment3/COMP-4549-Assignment3.csproj -c Release -o website
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: website
+        path: SimpleFeedReader/website/**
+        if-no-files-found: error
+
       
