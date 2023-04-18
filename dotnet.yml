@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: website
-        path: SimpleFeedReader/website/**
+        path: COMP-4549-Assignment3/website/**
         if-no-files-found: error
 
       
