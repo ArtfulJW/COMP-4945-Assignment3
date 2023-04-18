@@ -1,36 +1,49 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
+
 name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main", "dev" ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
+    env:
+      SOLUTIONPATH: ./COMP-4549-Assignment3.sln
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+        
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1
+      
+    - name: Restore Packages
+      run: nuget restore COMP-4549-Assignment3.sln
+      
+    - name: Build Solution
+      run: msbuild.exe COMP-4549-Assignment3.sln /p:platform="Any CPU" /p:configuration="Release"
+    - name: Run Solution
+      run: vstest.console.exe COMP-4549-Assignment3\bin\COMP-4549-Assignment3.dll
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
       with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Publish
-      run: dotnet publish COMP-4549-Assignment3/COMP-4549-Assignment3.csproj -c Release -o website
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: website
-        path: COMP-4549-Assignment3/website/**
-        if-no-files-found: error
+        name: published_webapp
+        path: COMP-4549-Assignment3\obj\Release
+        
+    - name: Install Google Chrome
+      uses: nanasess/setup-chromedriver@v1
+    - run: chromedriver --url-base=/wd/hub &
+    
+    - name: Run Test
+      run: msbuild SeleniumTest.Tests\SeleniumTest.Tests.csproj
